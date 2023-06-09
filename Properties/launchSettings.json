@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "API_consumer": {
+    "WebPetShop": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5136",
