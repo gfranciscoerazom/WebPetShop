@@ -1,0 +1,76 @@
+﻿@model List<Cliente>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!--<div class="text-center">
+    <h1 class="display-4">Welcome Ma ma mamia</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>-->
+
+<div class="card">
+    <div class="card-header">
+        Lista Cliente
+    </div>
+    <div class="card-body">
+        <a asp-action="Cliente" asp-controller="Cliente" asp-route-idCliente="0" class="btn btn-success btn-sm">Nuevo Cliente</a>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Cliente Id
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Numero
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ClienteId
+                        </td>
+                        <td>
+                            @item.Nombre
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Numero
+                        </td>
+                        <td>
+                            <a
+                                asp-action="Cliente"
+                                asp-controller="Cliente"
+                                asp-route-idCliente="@item.ClienteId"
+                                class="btn btn-primary btn-sm"
+                            >
+                            Editar
+                            </a>
+                            <a 
+                                asp-action="Delete"
+                                asp-controller="Cliente"
+                                asp-route-idCliente="@item.ClienteId"
+                                class="btn btn-danger btn-sm"
+                            >
+                            Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

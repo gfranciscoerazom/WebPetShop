@@ -1,0 +1,39 @@
+﻿@model Cliente
+
+@{
+    ViewData["Title"] = "Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Action
+    </div>
+    <div class="card-body">
+        <form asp-action="Save" asp-controller="Cliente" method="post">
+            <input asp-for="ClienteId" type="hidden" />
+
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Nombre" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Email" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Numero</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Numero" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Guardar Cliente</button>
+
+            <a asp-action="Index" asp-controller="Cliente" class="btn btn-warning btn-sm">Volver a la lista</a>
+        </form>
+
+        <hr />
+        
+    </div>
+</div>

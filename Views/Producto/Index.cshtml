@@ -1,0 +1,95 @@
+﻿@model List<Producto>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!--<div class="text-center">
+    <h1 class="display-4">Welcome Ma ma mamia</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>-->
+
+<div class="card">
+    <div class="card-header">
+        Lista Producto
+    </div>
+    <div class="card-body">
+        <a asp-action="Producto" asp-controller="Producto" asp-route-idProducto="0" class="btn btn-success btn-sm">Nuevo Producto</a>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Producto Id
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        Ventas
+                    </th>
+                    <th>
+                        <!--Este th es para los botones-->
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ProductoId
+                        </td>
+                        <td>
+                            @item.Nombre
+                        </td>
+                        <td>
+                            @item.Descripcion
+                        </td>
+                        <td>
+                            @item.Precio
+                        </td>
+                        <td>
+                            @item.Cantidad
+                        </td>
+                        <td>
+                            <img src=@item.Imagen width="30" height="30" />
+                        </td>
+                        <td>
+                            @item.Ventas
+                        </td>
+
+                        <!--Botones-->
+                        <td>
+                            <a asp-action="Producto"
+                           asp-controller="Producto"
+                           asp-route-idProducto="@item.ProductoId"
+                           class="btn btn-primary btn-sm">
+                                Editar
+                            </a>
+                            <a asp-action="Delete"
+                           asp-controller="Producto"
+                           asp-route-idProducto="@item.ProductoId"
+                           class="btn btn-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
