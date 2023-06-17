@@ -17,7 +17,15 @@ namespace WebPetShop.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var clientes = await _service.GetClientesAsync();
+            List<Cliente> clientes;
+            try
+            {
+                clientes = await _service.GetClientesAsync();
+            }
+            catch (HttpRequestException)
+            {
+                return View("~/Views/Error/BadApiConnection.cshtml");
+            }
 
             return View(clientes);
         }

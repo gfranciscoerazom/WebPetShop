@@ -1,8 +1,6 @@
 ﻿using WebPetShop.Models;
 using WebPetShop.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Differencing;
 
 namespace WebPetShop.Controllers
 {
@@ -17,7 +15,15 @@ namespace WebPetShop.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var productos = await _service.GetProductosAsync();
+            List<Producto> productos;
+            try
+            {
+                productos = await _service.GetProductosAsync();
+            }
+            catch (HttpRequestException)
+            {
+                return View("~/Views/Error/BadApiConnection.cshtml");
+            }
 
             return View(productos);
         }
