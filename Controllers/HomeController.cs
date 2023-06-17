@@ -1,5 +1,4 @@
 ﻿using WebPetShop.Models;
-using WebPetShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,17 +6,9 @@ namespace WebPetShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IService_API _service;
-
-        public HomeController(IService_API service)
+        public IActionResult Index()
         {
-            _service = service;
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            var productos = await _service.GetProductosAsync();
-            return View(productos);
+            return View();
         }
 
         public IActionResult Privacy()
