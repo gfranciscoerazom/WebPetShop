@@ -18,5 +18,6 @@ namespace WebPetShop.Services
         Task<bool> DeleteClienteAsync(int id);
 
         Task<Usuario[]> GetUsuarioOutputsAsync(Usuario usuario);
+        Task<Emisor[]> GetEmisoresAsync();
     }
 }
