@@ -1,4 +1,5 @@
 ﻿using WebPetShop.Models;
+using WebPetShop.Models.APITTHH;
 
 namespace WebPetShop.Services
 {
@@ -15,5 +16,7 @@ namespace WebPetShop.Services
         Task<bool> AddClienteAsync(Cliente cliente);
         Task<bool> UpdateClienteAsync(Cliente cliente);
         Task<bool> DeleteClienteAsync(int id);
+
+        Task<Usuario[]> GetUsuarioOutputsAsync(Usuario usuario);
     }
 }

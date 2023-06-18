@@ -2,17 +2,20 @@
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
+using WebPetShop.Models.APITTHH;
 
 namespace WebPetShop.Services
 {
     public class Service_API : IService_API
     {
         private static string _baseUrl;
+        private static string _ApiTthhUrl;
 
         public Service_API()
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
             _baseUrl = builder.GetSection("ApiSettings:baseUrl").Value;
+            _ApiTthhUrl = builder.GetSection("ApiSettings:ApiTthhUrl").Value;
         }
 
         public async Task<List<Producto>> GetProductosAsync()
@@ -126,6 +129,7 @@ namespace WebPetShop.Services
             return success;
         }
 
+        
         public async Task<List<Cliente>> GetClientesAsync()
         {
             var clientes = new List<Cliente>();
@@ -235,6 +239,30 @@ namespace WebPetShop.Services
             }
 
             return success;
+        }
+    
+        
+        public async Task<Usuario[]> GetUsuarioOutputsAsync(Usuario usuario)
+        {
+            Usuario[] usuarioOutputs = Array.Empty<Usuario>();
+
+            using (HttpClient httpClient = new())
+            {
+                httpClient.BaseAddress = new Uri(_ApiTthhUrl);
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+
+                var response = await httpClient.GetAsync($"api/Usuarios/?usuario={usuario.usuario}&password={usuario.password}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResult = await response.Content.ReadAsStringAsync();
+                    usuarioOutputs = JsonConvert.DeserializeObject<Usuario[]>(jsonResult);
+                }
+
+            }
+
+            return usuarioOutputs;
         }
     }
 }
