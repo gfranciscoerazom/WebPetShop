@@ -2,7 +2,7 @@
 using WebPetShop.Models.APITTHH;
 using WebPetShop.Services;
 
-namespace WebPetShop.Controllers;
+namespace WebPetShop.Controllers.APITTHH;
 
 public class UsuarioController : Controller
 {
@@ -21,6 +21,6 @@ public class UsuarioController : Controller
             password = "5005U"
         });
 
-        return View(usuarioOutput);
+        return View();
     }
 }
