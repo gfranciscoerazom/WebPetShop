@@ -19,5 +19,10 @@ namespace WebPetShop.Services
 
         Task<Usuario[]> GetUsuarioOutputsAsync(Usuario usuario);
         Task<Emisor[]> GetEmisoresAsync();
-    }
+
+        Task<Costos[]> CostosSelectAsync();
+        Task<Costos> CostosInsertAsync(Costos costos);
+		Task<Costos> CostosDeleteAsync(Costos costos);
+        Task<Costos> CostosUpdateAsync(Costos costos);
+	}
 }
