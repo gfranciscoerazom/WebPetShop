@@ -312,133 +312,78 @@ public class Service_API : IService_API
 			}
 		}
 
-		foreach (var Costos in costos)
+		foreach (var costo in costos)
 		{
-			Console.WriteLine(costos.ToString());
+			Console.WriteLine(costo.ToString());
 		}
 
 		return costos;
 	}
 
-	public async Task<Costos> CostosInsertAsync(Costos costos)
+	public async Task<Costos[]> CostosInsertAsync(Costos costo)
 	{
-        var costosI = new Costos();
+        var costos = Array.Empty<Costos>();
 
         using (var httpClient = new HttpClient())
         {
-            httpClient.BaseAddress = new Uri(_baseUrl);
+            httpClient.BaseAddress = new Uri(_ApiTthhUrl);
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
 
-            var response = await httpClient.GetAsync($"api/Varios/CentroCostosInsert?codigocentrocostos={costos.Codigo}&descripcioncentrocostos={costos.NombreCentroCostos}");
+            var response = await httpClient.GetAsync($"api/Varios/CentroCostosInsert?codigocentrocostos={costo.Codigo}&descripcioncentrocostos={costo.NombreCentroCostos}");
 
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                costosI = JsonConvert.DeserializeObject<Costos>(json);
+                costos = JsonConvert.DeserializeObject<Costos[]>(json);
             }
         }
 
-        return costosI;
-
-
-        /*var costoI = false;
-
-		using (HttpClient httpClient = new())
-		{
-			httpClient.BaseAddress = new Uri(_ApiTthhUrl);
-			httpClient.DefaultRequestHeaders.Accept.Clear();
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
-
-			var response = await httpClient.GetAsync($"api/Varios/CentroCostosInsert?codigocentrocostos={costos.codigoC}&descripcioncentrocostos={costos.nombreCosto}");
-
-			if (response.IsSuccessStatusCode)
-			{
-				costoI = true;
-			}
-		}
-
-        return costoI;*/
+        return costos;
     }
 
-	public async Task<Costos> CostosDeleteAsync(Costos costos)
+	public async Task<Costos[]> CostosDeleteAsync(Costos costo)
 	{
-        var costosD = new Costos();
+        var costos = Array.Empty<Costos>();
 
         using (var httpClient = new HttpClient())
         {
-            httpClient.BaseAddress = new Uri(_baseUrl);
+            httpClient.BaseAddress = new Uri(_ApiTthhUrl);
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
 
-            var response = await httpClient.GetAsync($"api/Varios/CentroCostosDelete?codigocentrocostos={costos.Codigo}&descripcioncentrocostos={costos.NombreCentroCostos}");
+            var response = await httpClient.GetAsync($"api/Varios/CentroCostosDelete?codigocentrocostos={costo.Codigo}&descripcioncentrocostos={costo.NombreCentroCostos}");
 
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                costosD = JsonConvert.DeserializeObject<Costos>(json);
+                costos = JsonConvert.DeserializeObject<Costos[]>(json);
             }
         }
 
-        return costosD;
-
-        /*var costoD = false;
-
-		using (HttpClient httpClient = new())
-		{
-			httpClient.BaseAddress = new Uri(_ApiTthhUrl);
-			httpClient.DefaultRequestHeaders.Accept.Clear();
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
-
-			var response = await httpClient.GetAsync($"api/Varios/CentroCostosDelete?codigocentrocostos={costos.codigoC}&descripcioncentrocostos={costos.nombreCosto}");
-
-			if (response.IsSuccessStatusCode)
-			{
-                costoD = true;
-			}
-		}
-
-		return costoD;*/
+        return costos;
     }
 
-	public async Task<Costos> CostosUpdateAsync(Costos costos)
+	public async Task<Costos[]> CostosUpdateAsync(Costos costo)
 	{
-        var costosU = new Costos();
+        var costos = Array.Empty<Costos>();
 
         using (var httpClient = new HttpClient())
         {
-            httpClient.BaseAddress = new Uri(_baseUrl);
+            httpClient.BaseAddress = new Uri(_ApiTthhUrl);
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
 
-            var response = await httpClient.GetAsync($"api/Varios/CentroCostosUpdate?codigocentrocostos={costos.Codigo}&descripcioncentrocostos={costos.NombreCentroCostos}");
+            var response = await httpClient.GetAsync($"api/Varios/CentroCostosUpdate?codigocentrocostos={costo.Codigo}&descripcioncentrocostos={costo.NombreCentroCostos}");
 
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                costosU = JsonConvert.DeserializeObject<Costos>(json);
+                costos = JsonConvert.DeserializeObject<Costos[]>(json);
             }
         }
 
-        return costosU;
-
-        /*var costoU = false;
-
-		using (HttpClient httpClient = new())
-		{
-			httpClient.BaseAddress = new Uri(_ApiTthhUrl);
-			httpClient.DefaultRequestHeaders.Accept.Clear();
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
-
-			var response = await httpClient.GetAsync($"api/Varios/CentroCostosUpdate?codigocentrocostos={costos.codigoC}&descripcioncentrocostos={costos.nombreCosto}");
-
-			if (response.IsSuccessStatusCode)
-			{
-                costoU = true;
-			}
-		}
-
-		return costoU;*/
+        return costos;
     }
 
 }

@@ -1,0 +1,29 @@
+﻿@using WebPetShop.Models.APITTHH;
+@model Costos
+
+@{
+    ViewData["Title"] = "Costos";
+}
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Action
+    </div>
+    <div class="card-body">
+        <form 
+            asp-controller="Costos"
+            asp-action="SaveUpdate" 
+            method="post">
+            <input asp-for="Codigo" type="hidden" />
+
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control form-control-sm" asp-for="NombreCentroCostos" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Guardar Centro de Costos</button>
+
+            <a asp-action="Index" asp-controller="Costos" class="btn btn-warning btn-sm">Volver a la lista</a>
+        </form>
+    </div>
+</div>

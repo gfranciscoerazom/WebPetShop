@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Centro Costos Page";
+}
+
+<h1>Pagina centro de costos</h1>
+
+<div class="card">
+    <div class="card-header">
+        Lista Centro de Costos
+    </div>
+    <div class="card-body">
+        <a asp-action="Insert" asp-controller="Costos" asp-route-idProducto="0" class="btn btn-success btn-sm">Nuevo Producto</a>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Mensaje
+                    </th>
+                    <th>
+                        <!--Este th es para los botones-->
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Codigo
+                        </td>
+                        <td>
+                            @item.NombreCentroCostos
+                        </td>
+                        <td>
+                            @item.Mensaje
+                        </td>
+
+                        <!--Botones-->
+                        <td>
+                            <a asp-action="Update"
+                               asp-controller="Costos"
+                               asp-route-costoId="@item.Codigo"
+                               asp-route-nombre="@item.NombreCentroCostos"
+                               class="btn btn-primary btn-sm">
+                                Editar
+                            </a>
+                            <a asp-action="Delete"
+                               asp-controller="Costos"
+                               asp-route-costoId="@item.Codigo"
+                               asp-route-nombre="@item.NombreCentroCostos"
+                               class="btn btn-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

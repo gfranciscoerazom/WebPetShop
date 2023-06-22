@@ -1,0 +1,33 @@
+﻿@using WebPetShop.Models.APITTHH;
+@model Usuario
+
+@{
+    ViewData["Title"] = "Costos";
+}
+
+<div class="card">
+    <div class="card-header">
+        @ViewBag.Action
+    </div>
+    <div class="card-body">
+        <form asp-action="LoginOnClick" asp-controller="Usuario" method="post">
+
+            <div class="mb-2">
+                <label class="form-label">Usuario</label>
+                <input type="text" class="form-control form-control-sm" asp-for="usuario" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control form-control-sm" asp-for="password" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Compañía</label>
+                <input type="text" class="form-control form-control-sm" asp-for="COMPANIA" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Login</button>
+        </form>
+    </div>
+</div>

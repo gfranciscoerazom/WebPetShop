@@ -21,8 +21,8 @@ namespace WebPetShop.Services
         Task<Emisor[]> GetEmisoresAsync();
 
         Task<Costos[]> CostosSelectAsync();
-        Task<Costos> CostosInsertAsync(Costos costos);
-		Task<Costos> CostosDeleteAsync(Costos costos);
-        Task<Costos> CostosUpdateAsync(Costos costos);
+        Task<Costos[]> CostosInsertAsync(Costos costos);
+        Task<Costos[]> CostosDeleteAsync(Costos costos);
+        Task<Costos[]> CostosUpdateAsync(Costos costos);
 	}
 }

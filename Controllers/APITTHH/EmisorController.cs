@@ -15,6 +15,6 @@ public class EmisorController : Controller
     public async Task<IActionResult> Index()
     {
         var emisores = await _service.GetEmisoresAsync();
-        return View();
+        return View(emisores);
     }
 }

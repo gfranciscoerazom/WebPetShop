@@ -1,7 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using WebPetShop.Models.APITTHH;
+@model Emisor[]
+
 @{
+       ViewData["Title"] = "Centro Costos Page";
 }
 
-<h1>Pagina de emisor</h1>
+<h1>Pagina Emisores</h1>
+
+<div class="card">
+    <div class="card-header">
+        Lista Emisores
+    </div>
+    <div class="card-body">
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Ruc
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Codigo
+                        </td>
+                        <td>
+                            @item.NombreEmisor
+                        </td>
+                        <td>
+                            @item.Ruc
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
