@@ -24,5 +24,26 @@ namespace WebPetShop.Services
         Task<Costos[]> CostosInsertAsync(Costos costos);
         Task<Costos[]> CostosDeleteAsync(Costos costos);
         Task<Costos[]> CostosUpdateAsync(Costos costos);
-	}
+        Task<Costos[]> CostosSearchAsync(string descripcioncentrocostos);
+
+        Task<MovimientoPlanilla[]> MovimientoPlanillaSelectAsync();
+        Task<MovimientoPlanilla> MovimientoPlanillaInsertAsync(MovimientoPlanilla movimientoPlanilla);
+        Task<MovimientoPlanilla> MovimientoPlanillaUpdateAsync(MovimientoPlanilla movimientoPlanilla);
+        Task<MovimientoPlanilla> MovimientoPlanillaDeleteAsync(int codigoConcepto, string concepto);
+        Task<MovimientoPlanilla[]> MovimientoPlanillaSearchAsync(string concepto);
+
+        Task<TipoOperacion[]> TipoOperacionSelectAsync();
+
+        Task<MovimientosExcepcion[]> MovimientosExcepcion1y2Async();
+        Task<MovimientosExcepcion[]> MovimientosExcepcion3Async();
+
+        Task<MovimientosExcepcion[]> TrabaAfectaIESSSelectAsync();
+
+        Task<MovimientosExcepcion[]> TrabAfecImpuestoRentaSelectAsync();
+
+        Task<Usuario> GetAutorizadorAsync(Usuario usuario);
+
+        Task<Trabajador[]> TrabajadorSelectAsync(int sucursal);
+        Task<Trabajador> TrabajadorInsertAsync(Trabajador trabajador);
+    }
 }
