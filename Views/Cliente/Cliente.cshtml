@@ -28,12 +28,17 @@
                 <input type="text" class="form-control form-control-sm" asp-for="Numero" />
             </div>
 
+            <div class="mb-2">
+                <label class="form-label">Contraseña</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Contrasena" />
+            </div>
+
             <button type="submit" class="btn btn-success btn-sm">Guardar Cliente</button>
 
             <a asp-action="Index" asp-controller="Cliente" class="btn btn-warning btn-sm">Volver a la lista</a>
         </form>
 
         <hr />
-        
+
     </div>
 </div>

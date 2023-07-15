@@ -1,0 +1,37 @@
+﻿@model WebPetShop.Models.ViewModel.LoginSignUpViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
+}
+
+<!--<div class="text-center">
+    <h1 class="display-4">Welcome Ma ma mamia</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>-->
+
+<div class="container">
+    <div class="row ">
+        <div class="col-4 offset-4 border border-primary rounded pl-5 pr-5 pb-5">   
+            <from asp-action="Login" asp-controller="Home" method="post">
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" placeholder="Ingresa Usuario" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" placeholder="Ingresa Contraseña" class="form-control" autocomplete="off" />
+                </div>
+
+                <a type="submit" class="btn btn-success btn-lg mb-1 float-right" asp-action="Login" asp-controller="Home">Log In</a>
+                <!--<div class="form-group">
+                    <a type="submit" class="btn btn-success btn-lg mb-1 float-right" asp-action="Login" asp-controller="Home">Log In</a>
+                </div>-->
+            </from>
+            <div class="text-center">
+                <a class="text-primary" asp-action="Forgot Username">Olvidaste tu Usuario?</a>  <a class="text-primary"
+                                                                                                   asp-action="Forgot Passwor">Olvidaste tu Contraseña?</a>
+            </div>
+        </div>
+    </div>
+</div>

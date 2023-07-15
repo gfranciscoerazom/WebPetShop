@@ -1,0 +1,49 @@
+﻿@model Producto
+
+@{
+    ViewData["Title"] = "Producto";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
+}
+
+<div class="card1">
+    <div class="card1-header">
+        @ViewBag.Action
+    </div>
+    <div class="card1-body">
+        <form asp-action="Save" asp-controller="Producto" method="post">
+            <input asp-for="ProductoId" type="hidden" />
+
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Nombre" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Descripcion</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Descripcion" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Precio</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Precio" />
+            </div>
+
+           <!-- <div class="mb-2">
+                <label class="form-label">Cantidad</label>
+                <input type="number" class="form-control form-control-sm" asp-for="Cantidad" />
+             </div>-->
+
+            <div class="mb-2">
+                <label class="form-label">Imagen</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Imagen" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-sm">Guardar Producto</button>
+
+            <a asp-action="Index" asp-controller="Producto" class="btn btn-warning btn-sm">Volver a la lista</a>
+        </form>
+
+        <hr />
+        
+    </div>
+</div>

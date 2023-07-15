@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
 }
 
 <!--<div class="text-center">
@@ -139,7 +140,7 @@
             font-weight: bold;
         }
 
-        .product-name { 
+        .product-name {
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -158,9 +159,9 @@
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-body">
-            <a asp-action="Producto" asp-controller="Producto" asp-route-idProducto="0" class="btn btn-success btn-sm">Nuevo Producto</a>
+    <div class="card1">
+        <div class="card1-body">
+            <!--<a asp-action="Producto" asp-controller="Producto" asp-route-idProducto="0" class="btn btn-success btn-sm">Nuevo Producto</a>-->
         
             <div class="product-container">
 
@@ -172,22 +173,7 @@
                             <p class="mb-2">@item.ProductoId</p>
                             <p class="mb-2">@item.Descripcion</p>
                             <p class="mb-2">@item.Precio</p>
-                            <h5 class="card-body">Cantidad</h5>
-                            <p class="mb-2">@item.Cantidad</p>
-                            <h5 class="card-body">Ventas</h5>
-                            <p class="" mb-2">@item.Ventas</p>
-                                    <a asp-action="Producto"
-                                       asp-controller="Producto"
-                                       asp-route-idProducto="@item.ProductoId"
-                                       class="btn btn-primary btn-sm">
-                                        Editar
-                                    </a>
-                                    <a asp-action="Delete"
-                                       asp-controller="Producto"
-                                       asp-route-idProducto="@item.ProductoId"
-                                       class="btn btn-danger btn-sm">
-                                        Eliminar
-                                    </a>
+                            <button onclick="addToCart(@item.Imagen, @item.ProductoId, @item.Nombre, @item.Descripcion, @item.Precio)">Agregar al Carrito</button>
                     </div>
                 }
                 </div>

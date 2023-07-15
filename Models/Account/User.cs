@@ -1,14 +1,17 @@
-﻿namespace WebPetShop.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebPetShop.Models.Account
 {
-    public class Cliente
+    public class User
     {
+        [Key]
         public int ClienteId
         {
             get;
             set;
         }
 
-        public string Nombre
+        public string Username
         {
             get;
             set;
@@ -20,13 +23,13 @@
             set;
         }
 
-        public string Numero
+        public string Mobile
         {
             get;
             set;
         }
 
-        public string Contrasena
+        public string Password
         {
             get;
             set;
@@ -36,12 +39,18 @@
         {
             get;
             set;
-        } = false;
+        }
 
-        public string Foto
+        public bool IsActive
         {
             get;
             set;
-        } = "https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG-Picture.png";
+        }
+
+        public bool IsRemember
+        {
+            get;
+            set;
+        }
     }
 }

@@ -22,6 +22,20 @@ namespace WebPetShop.Controllers
             return View(productos);
         }
 
+        public async Task<ActionResult> IndexC()
+        {
+            var productos = await _service.GetProductosAsync();
+
+            return View(productos);
+        }
+
+        public async Task<ActionResult> Index_Carrito()
+        {
+            var productos = await _service.GetProductosAsync();
+
+            return View(productos);
+        }
+
         public async Task<ActionResult> Producto(int idProducto)
         {
             var producto = new Producto();
@@ -75,5 +89,7 @@ namespace WebPetShop.Controllers
                 return NoContent();
             }
         }
+
+
     }
 }

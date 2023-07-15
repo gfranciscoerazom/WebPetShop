@@ -45,6 +45,7 @@ namespace WebPetShop.Controllers
             if (cliente.ClienteId == 0)
             {
                 response = await _service.AddClienteAsync(cliente);
+                Console.WriteLine("//////////////////////////\n" + response);
             }
             else
             {
@@ -53,7 +54,7 @@ namespace WebPetShop.Controllers
 
             if (response)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Cliente");
             }
             else
             {
@@ -68,12 +69,14 @@ namespace WebPetShop.Controllers
 
             if (response)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Cliente");
             }
             else
             {
                 return NoContent();
             }
         }
+
+
     }
 }

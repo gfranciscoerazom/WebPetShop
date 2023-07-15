@@ -10,7 +10,7 @@ namespace WebPetShop.Controllers
         {
             return View();
         }
-
+  
         public IActionResult Privacy()
         {
             return View();
@@ -20,6 +20,23 @@ namespace WebPetShop.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Login(Cliente model)
+        {
+            if (model.Email == "juan@gmail.com" && model.Contrasena == "12345")
+            {
+                return RedirectToAction("Index_Admin", "Admin");
+            }
+            else if (model.Email == "maria@gmail.com" && model.Contrasena == "12345")
+            {
+                return RedirectToAction("Index_Admin", "Admin");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+
         }
     }
 }

@@ -16,6 +16,7 @@
     <Content Remove="wwwroot\img\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <None Include="Views\Account\Index_Login.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
   </ItemGroup>
 </Project>

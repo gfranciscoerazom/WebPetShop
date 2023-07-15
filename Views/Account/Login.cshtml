@@ -1,0 +1,34 @@
+﻿@model WebPetShop.Models.ViewModel.LoginSignUpViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-lg-5">
+        <div class="col-4 offset-4 border border-primary rounded pl-5 pr-5 pb-5">
+            <div class="text-center">
+                <a class="text-light btn btn-primary font-weight-bold" asp-action="Index" asp-controller="Account">Registro Usuario</a>
+            </div>
+            <from method="post" asp-action="Login">
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" name="username" id="username" placeholder="Ingresa Usuario" class="form-control" autocomplete="off" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" name="password" id="password" placeholder="Ingresa Contraseña" class="form-control" autocomplete="off" />
+                </div>
+                <!--<div class="form-group">
+                    <a type="submit" class="btn btn-success btn-lg mb-1 float-right" asp-action="Index" asp-controller="Home">Log In</a>
+                </div>-->
+            </from>
+            <div class="text-center">
+                <a class="text-primary" asp-action="Forgot Username">Olvidaste tu Usuario?</a>  <a class="text-primary"
+                                                                                                 asp-action="Forgot Passwor">Olvidaste tu Contraseña?</a>
+            </div>
+        </div>
+    </div>
+</div>
+

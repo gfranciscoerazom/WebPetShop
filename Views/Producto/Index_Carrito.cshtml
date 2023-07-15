@@ -1,0 +1,297 @@
+﻿@model List<Producto>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
+}
+
+<!--<div class="text-center">
+    <h1 class="display-4">Welcome Ma ma mamia</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>-->
+
+<!--<div class="card">
+    <div class="card-header">
+        Lista Producto
+    </div>
+    <div class="card-body">
+        <a asp-action="Producto" asp-controller="Producto" asp-route-idProducto="0" class="btn btn-success btn-sm">Nuevo Producto</a>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Producto Id
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        Ventas
+                    </th>
+                    <th>
+                        Este th es para los botones
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>-->
+               <!--@foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ProductoId
+                        </td>
+                        <td>
+                            @item.Nombre
+                        </td>
+                        <td>
+                            @item.Descripcion
+                        </td>
+                        <td>
+                            @item.Precio
+                        </td>
+                        <td>
+                            @item.Cantidad
+                        </td>
+                        <td>
+                            <img src=@item.Imagen width="30" height="30" />
+                        </td>
+                        <td>
+                            @item.Ventas
+                        </td>
+
+                        Botones
+                        <td>
+                            <a asp-action="Producto"
+                           asp-controller="Producto"
+                           asp-route-idProducto="@item.ProductoId"
+                           class="btn btn-primary btn-sm">
+                                Editar
+                            </a>
+                            <a asp-action="Delete"
+                           asp-controller="Producto"
+                           asp-route-idProducto="@item.ProductoId"
+                           class="btn btn-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Estilos */
+
+        /* Estilos del carrito */
+        .cart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        .cart-items {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .cart-item img {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .cart-item .item-info {
+                flex-grow: 1;
+            }
+
+                .cart-item .item-info p {
+                    margin: 0;
+                }
+
+            .cart-item .item-quantity {
+                width: 50px;
+                text-align: center;
+            }
+
+            .cart-item .item-price {
+                width: 80px;
+                text-align: right;
+            }
+
+        .cart-total {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .cart-buttons {
+            text-align: center;
+        }
+
+        /* Estilos del botón */
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-right: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h2>Carrito de Compras</h2>
+        <div class="cart-items">
+            <!-- Aquí se mostrarán los elementos del carrito -->
+        </div>
+        <div class="cart-total">
+            Total: $<span id="total">0</span>
+        </div>
+        <div class="cart-buttons">
+            <button class="btn" onclick="clearCart()">Vaciar Carrito</button>
+            <button class="btn" onclick="checkout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script>
+        // Array para almacenar los productos en el carrito
+        var cartItems = [];
+
+        // Función para agregar un producto al carrito
+        function addToCart(name, price, image) {
+            var item = {
+                name: name,
+                price: price,
+                image: image
+            };
+            cartItems.push(item);
+            updateCart();
+        }
+
+        // Función para actualizar el contenido del carrito
+        function updateCart() {
+            var cartContainer = document.querySelector('.cart-items');
+            cartContainer.innerHTML = '';
+
+            var total = 0;
+
+            cartItems.forEach(function (item) {
+                var cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+
+                var itemImage = document.createElement('img');
+                itemImage.src = item.image;
+
+                var itemInfo = document.createElement('div');
+                itemInfo.classList.add('item-info');
+
+                var itemName = document.createElement('p');
+                itemName.textContent = item.name;
+
+                var itemPrice = document.createElement('p');
+                itemPrice.textContent = '$' + item.price;
+
+                var itemQuantity = document.createElement('input');
+                itemQuantity.type = 'number';
+                itemhtml
+                        .classList.add('item-quantity');
+                    itemQuantity.value = 1;
+                    itemQuantity.addEventListener('change', function() {
+                        updateQuantity(item, this.value);
+                    });
+
+                    var itemTotal = document.createElement('p');
+                    itemTotal.classList.add('item-price');
+                    itemTotal.textContent = '$' + item.price;
+
+                    cartItem.appendChild(itemImage);
+                    itemInfo.appendChild(itemName);
+                    itemInfo.appendChild(itemPrice);
+                    cartItem.appendChild(itemInfo);
+                    cartItem.appendChild(itemQuantity);
+                    cartItem.appendChild(itemTotal);
+
+                    cartContainer.appendChild(cartItem);
+
+                    total += item.price;
+                });
+
+                document.getElementById('total').textContent = total.toFixed(2);
+            }
+
+            // Función para actualizar la cantidad de un producto en el carrito
+            function updateQuantity(item, quantity) {
+                if (quantity <= 0) {
+                    removeItem(item);
+                    return;
+                }
+
+                item.quantity = parseInt(quantity);
+                updateCart();
+            }
+
+            // Función para eliminar un producto del carrito
+            function removeItem(item) {
+                var index = cartItems.indexOf(item);
+                if (index > -1) {
+                    cartItems.splice(index, 1);
+                    updateCart();
+                }
+            }
+
+            // Función para vaciar el carrito
+            function clearCart() {
+                cartItems = [];
+                updateCart();
+            }
+
+            // Función para finalizar la compra
+            function checkout() {
+                // Realizar acciones adicionales, como enviar el pedido al servidor, procesar el pago, etc.
+                alert('¡Gracias por tu compra!');
+                clearCart();
+            }
+    </script>
+
+    <!-- Ejemplo de uso -->
+    <div>
+        <h2>Productos</h2>
+        <button onclick="addToCart(Imagen, ProductoId, Nombre, Descripcion, Precio)">Agregar al Carrito</button>
+    </div>
+</body>
+</html>
+
+}
